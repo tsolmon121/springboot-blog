@@ -34,7 +34,10 @@ public class BlogService {
     }
 
     public Article updateArticle (Long id, UpdateArticleRequest req){
-        return blogRepository.findById(id).get();
+        Article article = new Article(req.getTitle(), req.getContent());
+        article.setId(id);
+        blogRepository.save(article);
+        return article;
     }
 
 }

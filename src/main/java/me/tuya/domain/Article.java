@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@Setter
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +23,4 @@ public class Article {
         this.title = title;
         this.content = content;
     }
-
 }
