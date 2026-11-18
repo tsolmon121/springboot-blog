@@ -6,6 +6,7 @@ import me.tuya.dto.AddArticleRequest;
 import me.tuya.dto.UpdateArticleRequest;
 import me.tuya.repository.BlogRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,11 +34,23 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
-    public Article updateArticle (Long id, UpdateArticleRequest req){
-        Article article = new Article(req.getTitle(), req.getContent());
-        article.setId(id);
-        blogRepository.save(article);
+//    public Article updateArticle (Long id, UpdateArticleRequest req){
+//        Article article = new Article(req.getTitle(), req.getContent());
+//        article.setId(id);
+//        blogRepository.save(article);
+//        return article;
+//    }
+
+//    public Article updateArticle(Long id, UpdateArticleRequest req) {
+//        Article article = blogRepository.findById(id).orElseThrow(()->new IllegalArgumentException("그런 blog 글은 존재하지 않음["+id+"]"));
+//        article.update(req.getTitle(), req.getContent());
+//        blogRepository.save(article);
+//        return article;
+//    }
+    @Transactional
+    public Article updateArticle(Long id, UpdateArticleRequest req) {
+        Article article = blogRepository.findById(id).orElseThrow(()->new IllegalArgumentException("그런 blog 글은 존재하지 않음["+id+"]"));
+        article.update(req.getTitle(), req.getContent());
         return article;
     }
-
 }
