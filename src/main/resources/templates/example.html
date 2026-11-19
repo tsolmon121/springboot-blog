@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport, user-scalable=no, initial-scale=1.0, maximum-scale=2.0" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <h1>타임리프 익히기</h1>
+    <p>info</p>
+    <div>
+        <p th:text="${student.name}">Ellie</p>
+        <p th:text="${student.age}">14</p>
+<!--        <p th:text="${student.hobbies}"></p>-->
+        <p>Paris</p>
+        <ul>
+            <li th:each="hobby : ${student.hobbies}" th:text="${hobby}"></li>
+<!--            <span>(hobby)</span>-->
+        </ul>
+    </div>
+</body>
+</html>
