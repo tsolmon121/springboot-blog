@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <p th:text="${#temporals.format(today, 'MM-dd, yyyy')}"></p>
     <div th:object="${person}">
         <h1>hello <span th:text="*{name}"></span>님</h1>
         <p>당신의 나이는 <span th:text="*{age}"></span>세 이군요.</p>
@@ -18,7 +19,7 @@
             </li>
         </ul>
     </div>
-    <a href="/api/article/1">blog 1번 글 내용</a>
+    <a href="@{/api/article/{id}(id-#{blogId})}">blog <span th:text="${blogId}"></span>번 글 내용</a>
 
 </body>
 </html>
